@@ -1,0 +1,17 @@
+.quill {
+  min-height: 100%;
+  color: var(#{--text-color-default});
+  
+  .ql-toolbar,
+  .ql-picker-label{
+    color: var(#{--text-color-default});
+  }
+}
+.ql-editor {
+  min-height: 350px;
+}
+
+.ql-snow.ql-toolbar button .ql-stroke, .ql-snow .ql-toolbar button .ql-stroke, .ql-snow.ql-toolbar button:focus .ql-stroke, .ql-snow .ql-toolbar button:focus .ql-stroke, .ql-snow.ql-toolbar button.ql-active .ql-stroke, .ql-snow .ql-toolbar button.ql-active .ql-stroke, .ql-snow.ql-toolbar .ql-picker-label .ql-stroke, .ql-snow .ql-toolbar .ql-picker-label .ql-stroke, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke, .ql-snow.ql-toolbar .ql-picker-item .ql-stroke, .ql-snow .ql-toolbar .ql-picker-item .ql-stroke, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke, .ql-snow.ql-toolbar button .ql-stroke-miter, .ql-snow .ql-toolbar button .ql-stroke-miter, .ql-snow.ql-toolbar button:focus .ql-stroke-miter, .ql-snow .ql-toolbar button:focus .ql-stroke-miter, .ql-snow.ql-toolbar button.ql-active .ql-stroke-miter, .ql-snow .ql-toolbar button.ql-active .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-label .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-label .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-item .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-item .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter {
+  stroke: var(#{--text-color-default});
+  transition: stroke 0.3s ease;
+}

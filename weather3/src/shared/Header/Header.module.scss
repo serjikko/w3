@@ -1,0 +1,39 @@
+@import '../../styles/variables.scss';
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+.right {
+  display: flex;
+  align-items: center;
+  width: 600px;
+  justify-content: space-between;
+}
+
+.change_theme,
+.logo {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.logo {
+  svg {
+    width: 65px;
+    height: 65px;
+  }
+}
+
+.title {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 25px;
+  color: $primary-color;
+}

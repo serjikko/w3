@@ -1,0 +1,71 @@
+.button {
+  background-color: var(#{--body-background-default});
+  outline: none;  
+  border: 1px solid #4793ff;
+  border-radius: 10px;
+  height: 38px;
+  padding: 20px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #4793ff;
+    .text {
+      color: #fff;
+    }
+    
+    .loading_icon {
+      border-top-color: #fff;
+    }
+  }
+
+
+  .loading_icon {
+    width: 50px;
+    height: 50px;
+    border: 5px solid transparent;
+    border-top-color: #4793ff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    display: none;
+    transition: border-top-color 0.3s ease;
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+  .text {
+    color: var(#{--text-color-default});
+    transition: color 0.3s ease;
+  }
+
+  cursor: pointer;
+  
+  &.loading {
+    .text {
+      display: none;
+    }
+
+    
+
+
+    .loading_icon {
+      width: 30px;
+      height: 30px;
+      display: block;
+
+      svg {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+}
