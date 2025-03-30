@@ -14,7 +14,11 @@ import {
   improveText,
 } from "../../store/thunks/textOperations";
 
-const Assistant = () => {
+
+interface AssistantProps {
+}
+
+const Assistant: React.FC<AssistantProps> = () => {
   const dispatch = useCustomDispatch();
   const { text, isLoading, tone } = useSelector(selectors.selectAssistant);
 
@@ -50,7 +54,7 @@ const Assistant = () => {
 
   const toneDisplay = useMemo(() => {
     return tone; 
-    }, [tone]);
+  }, [tone]);
 
   return (
     <div className={s.wrapper}>
