@@ -1,3 +1,4 @@
+import React, { useCallback, useMemo } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import s from "./Assistant.module.scss";
@@ -17,7 +18,7 @@ const Assistant = () => {
   const dispatch = useCustomDispatch();
   const { text, isLoading, tone } = useSelector(selectors.selectAssistant);
 
-  const handleFixTextErrors = () => {
+  const handleFixTextErrors = useCallback(() => {
     dispatch(fixTextErrors(text));
     dispatch(
       assistantSlice.actions.changeLoadingStatus({
@@ -25,9 +26,9 @@ const Assistant = () => {
         value: !isLoading.fixLoading,
       })
     );
-  };
+  }, [dispatch, text, isLoading.fixLoading]);
 
-  const handleImproveText = () => {
+  const handleImproveText = useCallback(() => {
     dispatch(improveText(text));
     dispatch(
       assistantSlice.actions.changeLoadingStatus({
@@ -35,9 +36,9 @@ const Assistant = () => {
         value: !isLoading.improveLoading,
       })
     );
-  };
+  }, [dispatch, text, isLoading.improveLoading]);
 
-  const handleAnalyzeText = () => {
+  const handleAnalyzeText = useCallback(() => {
     dispatch(analyzeText(text));
     dispatch(
       assistantSlice.actions.changeLoadingStatus({
@@ -45,7 +46,11 @@ const Assistant = () => {
         value: !isLoading.analyzeLoading,
       })
     );
-  };
+  }, [dispatch, text, isLoading.analyzeLoading]);
+
+  const toneDisplay = useMemo(() => {
+    return tone; 
+    }, [tone]);
 
   return (
     <div className={s.wrapper}>
@@ -61,7 +66,7 @@ const Assistant = () => {
         </Button>
       </div>
       <div className={s.input_wrapper}>
-        <div className={s.tone_wrapper}>{tone}</div>
+        <div className={s.tone_wrapper}>{toneDisplay}</div>
         <ReactQuill
           value={text}
           onChange={(value: string) =>
@@ -73,4 +78,4 @@ const Assistant = () => {
   );
 };
 
-export default Assistant;
+export default React.memo(Assistant);
