@@ -1,5 +1,4 @@
 import ReactQuill from "react-quill";
-
 import "react-quill/dist/quill.snow.css";
 import s from "./Assistant.module.scss";
 import "./style.scss";
@@ -18,55 +17,46 @@ const Assistant = () => {
   const dispatch = useCustomDispatch();
   const { text, isLoading, tone } = useSelector(selectors.selectAssistant);
 
+  const handleFixTextErrors = () => {
+    dispatch(fixTextErrors(text));
+    dispatch(
+      assistantSlice.actions.changeLoadingStatus({
+        key: "fixLoading",
+        value: !isLoading.fixLoading,
+      })
+    );
+  };
+
+  const handleImproveText = () => {
+    dispatch(improveText(text));
+    dispatch(
+      assistantSlice.actions.changeLoadingStatus({
+        key: "improveLoading",
+        value: !isLoading.improveLoading,
+      })
+    );
+  };
+
+  const handleAnalyzeText = () => {
+    dispatch(analyzeText(text));
+    dispatch(
+      assistantSlice.actions.changeLoadingStatus({
+        key: "analyzeLoading",
+        value: !isLoading.analyzeLoading,
+      })
+    );
+  };
+
   return (
     <div className={s.wrapper}>
       <div className={s.functions_row}>
-        <Button
-          onClick={() => {
-            dispatch(fixTextErrors(text));
-            dispatch(
-              assistantSlice.actions.changeLoadingStatus({
-                key: "fixLoading",
-                value: !isLoading.fixLoading
-                  ? !isLoading.fixLoading
-                  : isLoading.fixLoading,
-              })
-            );
-          }}
-          isLoading={isLoading.fixLoading}
-        >
+        <Button onClick={handleFixTextErrors} isLoading={isLoading.fixLoading}>
           Исправить ошибки
         </Button>
-        <Button
-          onClick={() => {
-            dispatch(improveText(text));
-            dispatch(
-              assistantSlice.actions.changeLoadingStatus({
-                key: "improveLoading",
-                value: !isLoading.improveLoading
-                  ? !isLoading.improveLoading
-                  : isLoading.improveLoading,
-              })
-            );
-          }}
-          isLoading={isLoading.improveLoading}
-        >
+        <Button onClick={handleImproveText} isLoading={isLoading.improveLoading}>
           Улучшение стиля
         </Button>
-        <Button
-          onClick={() => {
-            dispatch(analyzeText(text));
-            dispatch(
-              assistantSlice.actions.changeLoadingStatus({
-                key: "analyzeLoading",
-                value: !isLoading.analyzeLoading
-                  ? !isLoading.analyzeLoading
-                  : isLoading.analyzeLoading,
-              })
-            );
-          }}
-          isLoading={isLoading.analyzeLoading}
-        >
+        <Button onClick={handleAnalyzeText} isLoading={isLoading.analyzeLoading}>
           Анализировать эмоциональный тон текста
         </Button>
       </div>
